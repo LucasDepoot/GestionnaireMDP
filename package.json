@@ -1,6 +1,7 @@
 {
   "name": "gestionnairemdp",
   "version": "1.0.0",
+  "type": "module",
   "description": "**LocalPass** est un gestionnaire de mots de passe 100% local, conçu pour stocker les identifiants de manière sécurisée sur une **clé USB**, avec une **interface Chrome** pour l’auto-complétion des champs sur les sites web.",
   "main": "index.js",
   "scripts": {
