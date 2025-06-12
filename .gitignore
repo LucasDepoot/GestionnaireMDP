@@ -1,0 +1,31 @@
+# 📦 Node modules
+node_modules/
+
+# 📁 Vaults & fichiers sensibles
+vaults/
+*.vault
+*.key
+
+# 🔐 Mots de passe / secrets (au cas où tu en stockes temporairement)
+*.env
+*.secret
+
+# 🛠️ Build files (si tu buildes plus tard l'app avec pkg ou autre)
+dist/
+build/
+*.exe
+*.app
+
+# 💻 OS-specific
+.DS_Store
+Thumbs.db
+
+# ✏️ Logs et debug
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 📁 IDE (VS Code, JetBrains...)
+.vscode/
+.idea/
