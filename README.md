@@ -21,12 +21,12 @@ L'objectif est d'avoir **le contrôle total des données**, sans serveur distant
 
 | Composant | Choix préféré | Alternatives possibles |
 |----------|---------------|------------------------|
-| Chiffrement | `AES-256-GCM` via `crypto` ou `cryptography` | ChaCha20 |
+| Chiffrement | `AES-256-GCM` via `crypto`|
 | Hashing mot de passe maître | `Argon2` | PBKDF2, bcrypt |
-| Langage de l'app locale | `Node.js` | Python, Rust |
+| Langage de l'app locale | `Node.js` |
 | Extension navigateur | HTML/CSS + JavaScript (Chrome API) | WebExtension (Firefox) |
 | Communication extension/app | `chrome.runtime.connectNative` | WebSocket, fichiers temporaires |
-| Stockage | Fichier JSON chiffré sur clé USB | SQLite chiffrée |
+| Stockage | Fichier JSON chiffré sur clé USB |
 
 ---
 
@@ -34,7 +34,7 @@ L'objectif est d'avoir **le contrôle total des données**, sans serveur distant
 
 localpass/
 │
-├── cli/ # App locale (Node.js ou Python)
+├── cli/ # App locale (Node.js)
 │ ├── index.js
 │ └── vault.json.enc # Vault chiffré (sur la clé)
 │
@@ -83,7 +83,7 @@ Ce projet sert aussi à :
 
 ## 👨‍💻 Auteur
 
-Projet codé par [Toi] guidé par ton associé IA 🧠 avec une obsession pour la sécurité et le code propre ✨
+Projet codé par Lucas Depoot guidé par son associé IA 🧠 avec une obsession pour la sécurité et le code propre ✨
 
 ---
 
