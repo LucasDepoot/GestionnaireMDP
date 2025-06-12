@@ -1,22 +1,40 @@
+import fs from 'fs-extra';
 import drivelist from 'drivelist';
 import inquirer from 'inquirer';
 
 async function chooseDrive() {
   const drives = await drivelist.list();
 
-  if (drives.length === 0) {
-    console.log("Aucun périphérique détecté.");
+  // Filtrer uniquement ceux avec un point de montage accessible en écriture
+  const usableDrives = [];
+
+  for (const drive of drives) {
+    if (drive.mountpoints.length === 0) continue; // pas de point de montage
+
+    const mountPath = drive.mountpoints[0].path;
+
+    try {
+      // Test accès en écriture
+      await fs.access(mountPath, fs.constants.W_OK);
+      usableDrives.push(drive);
+    } catch {
+      // Pas accessible en écriture => on ignore
+    }
+  }
+  //Gestion d'erreur si il n'y a pas de disques utilisable
+  if (usableDrives.length === 0) {
+    console.log("Aucun périphérique utilisable détecté.");
     return null;
   }
-//   Recuperation de la liste des peripheriques
-  const choices = drives.map((drive, index) => {
-    const mountpoints = drive.mountpoints.map(m => m.path).join(', ') || 'Pas de point de montage';
+//   On parcours la liste de disques pour l'afficher
+  const choices = usableDrives.map((drive, index) => {
+    const mountpoints = drive.mountpoints.map(m => m.path).join(', ');
     return {
       name: `${drive.description} - ${drive.device} - ${mountpoints}`,
       value: index
     };
   });
-//  Proposition des disques dans le terminal
+//  Demande a l'user de choisir le disque
   const answers = await inquirer.prompt([
     {
       type: 'list',
@@ -26,14 +44,8 @@ async function chooseDrive() {
     }
   ]);
 
-  const chosenDrive = drives[answers.driveIndex];
-
-  // On retourne le premier point de montage (généralement c'est suffisant)
-  if (chosenDrive.mountpoints.length === 0) {
-    console.log("Le périphérique choisi n'a pas de point de montage accessible.");
-    return null;
-  }
-
+  const chosenDrive = usableDrives[answers.driveIndex];
   return chosenDrive.mountpoints[0].path;
 }
+
 export default chooseDrive;
