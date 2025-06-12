@@ -22,7 +22,8 @@ L'objectif est d'avoir **le contrôle total des données**, sans serveur distant
 | Composant | Choix préféré | Alternatives possibles |
 |----------|---------------|------------------------|
 | Chiffrement | `AES-256-GCM` via `crypto`|
-| Hashing mot de passe maître | `Argon2` | PBKDF2, bcrypt |
+| Hashing mot de passe maître | `Argon2` |
+| Choix du stockage | `driveList` |
 | Langage de l'app locale | `Node.js` |
 | Extension navigateur | HTML/CSS + JavaScript (Chrome API) | WebExtension (Firefox) |
 | Communication extension/app | `chrome.runtime.connectNative` | WebSocket, fichiers temporaires |

@@ -29,3 +29,6 @@ yarn-error.log*
 # 📁 IDE (VS Code, JetBrains...)
 .vscode/
 .idea/
+
+# TODO
+TODO.md
