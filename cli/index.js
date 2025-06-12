@@ -1,6 +1,8 @@
 import inquirer from 'inquirer';
 
+// Demande de mot de passe dans le terminal
 async function askMasterPassword() {
+    // Parametre du prompt
   const answers = await inquirer.prompt([
     {
       type: 'password',
