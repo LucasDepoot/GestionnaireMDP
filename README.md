@@ -1,6 +1,6 @@
-# 🔐 LocalPass - Gestionnaire de mots de passe local & sécurisé
+# 🔐 Lockal Pass - Gestionnaire de mots de passe local & sécurisé
 
-**LocalPass** est un gestionnaire de mots de passe 100% local, conçu pour stocker les identifiants de manière sécurisée sur une **clé USB**, avec une **interface Chrome** pour l’auto-complétion des champs sur les sites web.
+**Lockal Pass** est un gestionnaire de mots de passe 100% local, conçu pour stocker les identifiants de manière sécurisée sur une **clé USB**, avec une **interface Chrome** pour l’auto-complétion des champs sur les sites web.
 
 L'objectif est d'avoir **le contrôle total des données**, sans serveur distant, tout en gardant une expérience fluide et sécurisée via une extension navigateur.
 
@@ -11,7 +11,6 @@ L'objectif est d'avoir **le contrôle total des données**, sans serveur distant
 - 🔑 Mot de passe maître unique (jamais stocké)
 - 🔒 Vault chiffré en AES-256 GCM, stocké sur une clé USB
 - 🧠 Générateur de mots de passe robustes
-- 💻 Interface CLI locale (ajout, modification, suppression, lecture)
 - 🌐 Extension Chrome avec auto-remplissage des champs
 - 🔐 Extension utilisable uniquement si la clé USB est branchée
 
@@ -19,19 +18,19 @@ L'objectif est d'avoir **le contrôle total des données**, sans serveur distant
 
 ## 🧰 Technologies envisagées
 
-| Composant | Choix préféré | Alternatives possibles |
+| Composant | Technos utilisées |
 |----------|---------------|------------------------|
 | Chiffrement | `AES-256-GCM` via `crypto`|
 | Hashing mot de passe maître | `Argon2` |
 | Choix du stockage | `driveList` |
 | Langage de l'app locale | `Node.js` |
-| Extension navigateur | HTML/CSS + JavaScript (Chrome API) | WebExtension (Firefox) |
-| Communication extension/app | `chrome.runtime.connectNative` | WebSocket, fichiers temporaires |
+| Extension navigateur | HTML/CSS + JavaScript (Chrome API) |
+| Communication extension/app | `chrome.runtime.connectNative` 
 | Stockage | Fichier JSON chiffré sur clé USB |
 
 ---
 
-## 🔍 Structure projet envisagée
+## 🔍 Structure projet
 
 localpass/
 │
@@ -44,22 +43,27 @@ localpass/
 |
 ├── extension/ # Code de l'extension Chrome
 │ ├── manifest.json
+│ ├── background.js  
 │ ├── popup.html
 │ ├── popup.js
-│ └── content.js
+│ ├── content.js
+│ ├──  style.css
+  └── icons?
+│    ├── icon16.png
+│    ├── icon48.png
+│    └── icon128.png
 │
 └── README.md
-│── vault.json # Vault chiffré (sur la clé)
 
 ---
 
-## 📅 Roadmap (à affiner)
+## 📅 Roadmap
 
 - [ ] 🎯 Définir la structure des données
-- [ ] 🔐 Implémenter le hash et le chiffrement local (CLI)
-- [ ] 🧪 Lire / écrire dans le vault chiffré (via CLI)
+- [ ] 🔐 Implémenter le hash et le chiffrement local
+- [ ] 🧪 Lire / écrire dans le vault chiffré
 - [ ] 🧩 Créer extension Chrome simple (popup + content script)
-- [ ] 🔗 Lier extension et CLI via Native Messaging
+- [ ] 🔗 Lier extension via Native Messaging
 - [ ] 🔓 Vérification de la présence de la clé USB
 - [ ] 🧠 Générateur de mot de passe
 - [ ] 🌙 UI propre (UX, thèmes, animations ?)
