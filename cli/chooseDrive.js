@@ -4,7 +4,7 @@ import inquirer from 'inquirer';
 
 async function chooseDrive() {
     const drives = await drivelist.list();
-
+    
     // Filtrer uniquement ceux avec un point de montage accessible en lecture + écriture
     const usableDrives = [];
 

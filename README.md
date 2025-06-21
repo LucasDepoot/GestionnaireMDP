@@ -37,8 +37,11 @@ localpass/
 │
 ├── cli/ # App locale (Node.js)
 │ ├── index.js
-│ └── vault.json.enc # Vault chiffré (sur la clé)
-│
+│ └── chooseDrive.js #choix de la cle de stockage
+│ └── encryption.js # Module gestion chiffrement/déchiffrement AES-256-GCM
+│ └── password.js # Module gestion mot de passe maître (hash, validation)
+│ └── vault.js # Module gestion fichier vault (lecture, écriture, existence)
+|
 ├── extension/ # Code de l'extension Chrome
 │ ├── manifest.json
 │ ├── popup.html
@@ -46,6 +49,7 @@ localpass/
 │ └── content.js
 │
 └── README.md
+│── vault.json # Vault chiffré (sur la clé)
 
 ---
 
